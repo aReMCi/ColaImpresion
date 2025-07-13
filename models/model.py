@@ -1,11 +1,11 @@
-from .PilaDinamica import PilaDinamica
+from .ColaDinamica import ColaDinamica
 
 class DataModel:
     def __init__(self):
-        self.lista = PilaDinamica()
+        self.lista = ColaDinamica()
 
     def add_data(self, item):
-        self.lista.apilar(item)
+        self.lista.encolar(item)
 
     def del_data(self):
         return self.lista.desapilar()

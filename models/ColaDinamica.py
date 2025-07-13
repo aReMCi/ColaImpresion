@@ -1,4 +1,4 @@
-class PilaDinamica:
+class ColaDinamica:
     
     def __init__(self):
         self.pila = []
@@ -6,15 +6,15 @@ class PilaDinamica:
     def esta_vacia(self):
         return len(self.pila) == 0
 
-    def apilar(self, elemento):
+    def encolar(self, elemento):
         self.pila.append(elemento)
-        print(f"Apilado: {elemento}")
+        print(f"Encolado: {elemento}")
 
     def desapilar(self):
         if self.esta_vacia():
             print("Error: La pila está vacía. No se puede desapilar.")
             return None
-        elemento = self.pila.pop()
+        elemento = self.pila[0]
         print(f"Desapilado: {elemento}")
         return elemento
 
