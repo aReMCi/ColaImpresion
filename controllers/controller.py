@@ -40,12 +40,12 @@ class Controller:
             self.view.show_status("No hay más documentos para imprimir.")
 
     def add_item(self):
-        file_path = self.view.ask_open_file()  
-        if file_path:
+        file_paths = self.view.ask_open_file()  
+        if file_paths:
             # Procesar archivo
-            print(f"Archivo seleccionado: {file_path}")
-            self.model.add_data(file_path)
-            self.view.tree.insert("", "end", values=(self.model.get_cantidad(), file_path))
+            for file_path in file_paths:
+                self.model.add_data(file_path)
+                self.view.tree.insert("", "end", values=(self.model.get_cantidad(), file_path))
             self.iniciar_impresion()
 
     def delete_item(self):

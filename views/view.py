@@ -34,9 +34,9 @@ class View:
         self.add_button.grid(row=0, column=0, padx=5)
 
     def ask_open_file(self):
-        return filedialog.askopenfilename(
+        return filedialog.askopenfilenames(
             title="Abrir Archivo",
-            filetypes=[("Archivos de Texto", "*.txt"), ("Todos los Archivos", "*.*")]
+            filetypes=[("Todos los Archivos", "*.*")]
         )
     
     def _handle_add_button_click(self):
