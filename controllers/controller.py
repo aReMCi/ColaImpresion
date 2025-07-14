@@ -19,18 +19,17 @@ class Controller:
         if self.model.get_cantidad() == 0:
             self.imprimiendo = False
             return
-        #simulando 10 segundos de impresión
+        #simulando 5 segundos de impresión
         self.view.show_status("Imprimiendo...")
-        self.view.master.after(10000, self._finalizar_impresion)
+        self.view.master.after(5000, self._finalizar_impresion)
 
     def _finalizar_impresion(self):
         removed_item = self.model.del_data()
         if removed_item:
             #Eliminar el primer elemento
-            for item in self.view.tree.get_children():
-                if self.view.tree.item(item, 'values')[1] == removed_item:
-                    self.view.tree.delete(item)
-                    break
+            children = self.view.tree.get_children()
+            if children:
+                self.view.tree.delete(children[0])
         self.view.show_status("Listo")
 
         if self.model.get_cantidad() > 0:
@@ -42,7 +41,7 @@ class Controller:
     def add_item(self):
         file_paths = self.view.ask_open_file()  
         if file_paths:
-            # Procesar archivos
+            # Procesar archivo
             for file_path in file_paths:
                 self.model.add_data(file_path)
                 self.view.tree.insert("", "end", values=(self.model.get_cantidad(), file_path))
