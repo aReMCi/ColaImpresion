@@ -19,7 +19,7 @@ class Controller:
         if self.model.get_cantidad() == 0:
             self.imprimiendo = False
             return
-        #simulando 5 segundos de impresión
+        #simulando 10 segundos de impresión
         self.view.show_status("Imprimiendo...")
         self.view.master.after(10000, self._finalizar_impresion)
 
@@ -42,7 +42,7 @@ class Controller:
     def add_item(self):
         file_paths = self.view.ask_open_file()  
         if file_paths:
-            # Procesar archivo
+            # Procesar archivos
             for file_path in file_paths:
                 self.model.add_data(file_path)
                 self.view.tree.insert("", "end", values=(self.model.get_cantidad(), file_path))
